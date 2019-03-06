@@ -1,0 +1,14 @@
+.container{
+  display: flex;
+}
+.content {
+  background-color: rgb(212, 255, 210);
+  margin:.5rem;
+  width: 80%;
+
+}
+.title {
+  text-align: center;
+  justify-content: center;
+}
+

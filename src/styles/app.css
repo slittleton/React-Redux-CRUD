@@ -1,0 +1,22 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: rgb(255, 255, 255);
+  font-family: calibri;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color: rgb(212, 255, 210);
+  margin: 1.5rem 0 1rem 0;
+  color: rgb(110, 28, 28);
+}
+.logo{
+  width: 4rem;
+  margin: 0 1rem 0 1rem;
+  float: right;
+  padding: 1rem;
+}
+

@@ -1,0 +1,34 @@
+json-server --watch db.json --port 3001
+
+
+JSON Server - Fake REST API
+This app uses json server as a fake rest api to store, update, delete, and post 
+blogs. You will need to install json server to get it to work
+
+1)
+npm install -g json-server
+
+2)
+start json server on port 3001:
+json-server --watch db.json --port 3001
+
+3) start react app
+npm run start
+
+more info here
+https://dev.to/rodeghiero_/json-server-with-reactjs-3chd
+
+
+
+DATABASE ON localhost:3001
+
+Entire DATABASE
+http://localhost:3001/db
+
+All Users
+http://localhost:3001/users
+
+All Blogs
+http://localhost:3001/blogs
+
+

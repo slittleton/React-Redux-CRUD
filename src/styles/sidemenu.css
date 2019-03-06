@@ -1,0 +1,21 @@
+.side-menu{
+  width: 20%;
+  background-color: rgb(212, 255, 210);
+  margin: .5rem;
+  padding: .5rem .5rem .5rem .5rem
+}
+.link{
+  text-decoration: none;
+  color: rgb(110, 28, 28);
+  font-family: calibri;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.menu-title {
+  font-Size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  color: rgb(110, 28, 28);
+}

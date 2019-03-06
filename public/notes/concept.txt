@@ -1,0 +1,17 @@
+This is a basic crud app
+
+all pages
+  - banner with Title of project and home link 
+  - menu sidebar - contains some user info and links to
+    other routes
+
+Home - displays contents of most recent post
+Create - displays a content creation form that will make a new post
+PostList - lists posts with post id and title 
+           each post should have an edit and a delete button
+Edit - displays the content of a post in a form that can be changed 
+       and submitted to server. After successful submission  the post should be
+      updated and user to should be taken home
+delete - modal that pops up on PostList page when user clicks delete 
+         modal should ask to confirm that user wants to delete. Item should then
+         be deleted and user informed of success or failure
