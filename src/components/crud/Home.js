@@ -11,15 +11,15 @@ class Home extends React.Component {
   
   mostRecentPost(){
     const {posts} = this.props;
-    if( posts.length > 0 ){
+    if(posts){
       let maxId = Math.max(...posts.map( post => { return post.id }))
       let post = posts.filter( post => post.id === maxId)[0];
 
       return (
         <div>
-          <h2 className="title">Most Recent Post</h2>
+          <h2 className="post-title">Most Recent Post</h2>
           <div key={post.id} className="asdf">
-            <h3 className="title">{post.title}</h3>
+            <h3 className="post-title">{post.title}</h3>
             <p>By: {post.name} on {post.date}</p>
             <p>{post.body}</p>
             <hr/>
@@ -44,7 +44,7 @@ class Home extends React.Component {
 
 const mapStateToProps= (state) =>{
   return {
-  posts: state.crudReducer
+  posts: state.crudReducer.posts
   }
 }
 

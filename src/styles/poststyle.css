@@ -1,4 +1,25 @@
-.asdf {
-  padding: 1rem;
-  
+.posts-container {
+  padding: 0 1rem 0 1rem;
+}
+.btn {
+  text-decoration: none;
+  margin: .5rem;
+  border-radius:0;
+  padding: .5rem;
+  background-color: rgb(0, 0, 0);
+  color: rgb(212, 255, 210);
+  font-size: 1rem;
+  font-family: helvetica;
+  box-shadow: 2px 2px 2px rgb(94, 94, 94);
+  border: none;
+}
+.btn:hover{
+  cursor: pointer;
+}
+.btns-info {
+  display:flex;
+  justify-content: space-between;
+}
+.btns-wrapper{
+  float: left;
 }

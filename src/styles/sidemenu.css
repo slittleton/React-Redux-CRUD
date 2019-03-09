@@ -1,12 +1,12 @@
 .side-menu{
   width: 20%;
-  background-color: rgb(212, 255, 210);
+  background-color: rgba(212, 255, 210);
   margin: .5rem;
   padding: .5rem .5rem .5rem .5rem
 }
 .link{
   text-decoration: none;
-  color: rgb(110, 28, 28);
+  color: black;
   font-family: calibri;
   font-size: 1.4rem;
   font-weight: bold;
@@ -17,5 +17,16 @@
   font-weight: bold;
   justify-content: center;
   text-align: center;
-  color: rgb(110, 28, 28);
+  color: black;
+}
+
+.link-wrapper {
+  margin: .5rem 0 .5rem 0;
+  border-radius: .3rem;
+  border: 1px solid green;
+  justify-content: center;
+  text-align: center;
+}
+hr {
+  border-color: black;
 }
