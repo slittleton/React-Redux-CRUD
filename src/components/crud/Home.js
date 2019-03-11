@@ -18,7 +18,7 @@ class Home extends React.Component {
       return (
         <div>
           <h2 className="post-title">Most Recent Post</h2>
-          <div key={post.id} className="asdf">
+          <div key={post.id} className="posts-container">
             <h3 className="post-title">{post.title}</h3>
             <p>By: {post.name} on {post.date}</p>
             <p>{post.body}</p>

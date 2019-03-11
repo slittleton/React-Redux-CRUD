@@ -1,6 +1,6 @@
 import React from 'react';
 import SideMenu from '../layout/SideMenu';
-import { fetchPosts, fetchPost, updatePost } from '../../actions';
+import { fetchPost, updatePost } from '../../actions';
 import { connect } from 'react-redux';
 
 class EditPost extends React.Component{
@@ -14,41 +14,43 @@ state = {
   async componentDidMount(){
     const { id } = this.props.match.params;
     await this.props.fetchPost(id)
-      .then(()=>{
-        const { name, title, body } = this.props.post.data
 
-        this.setState({
-          name: name,
-          title: title,
-          body: body,
-          id: id
-        })
-      })
+    const { name, title, body } = this.props.post.data
+
+    this.setState({
+      name: name,
+      title: title,
+      body: body,
+      id: id
+    })
+
   }
-
 
   onChange = e => this.setState({[e.target.name]: e.target.value});
 
-  onClickUpdate = () => {
+  onClickUpdate = async () => {
     const {name, title, body, id} =this.state
     if(name !=='' && title !==''&& body !==''&& id !==''){
-
-      this.props.updatePost(this.state);
-
+      this.props.updatePost(this.state)
     }
-    
-    //TODO notify user that submission success, Redirect to home
 
+    this.props.fetchPost(this.state.id)
+  }
+
+  componentWillUpdate(){
+    console.log(this.props.post) 
+  }
+  componentWillReceiveProps(nextProps){
+    console.log(nextProps) 
   }
 
   render(){
     return(
       <div className="edit-post container">
       <SideMenu/>
-
       <div className="content">
-        <h1 className="page-title">Create A New Post</h1>
-        <form onSubmit={this.updatePost}>
+        <h1 className="page-title">Edit Post</h1>
+        <form >
           <div className="form-field">
             <div>
             </div>
@@ -95,16 +97,16 @@ state = {
               >Submit</button>
             </div>
       </div>
+      
     </div>
     )
   }
 }
 
 const mapStateToProps= (state) =>{
-  // console.log(state);
   return {
   post: state.crudReducer.post
   }
 }
 
-export default connect(mapStateToProps, {fetchPosts, fetchPost, updatePost} )(EditPost);
+export default connect(mapStateToProps, { fetchPost, updatePost})(EditPost);

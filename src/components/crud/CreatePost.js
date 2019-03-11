@@ -12,12 +12,11 @@ class CreatePost extends React.Component{
     submitMsg: null
   }
 
-
-
   onChange = (e) => {this.setState({[e.target.name]: e.target.value})}
 
   publishPost = (e) => {
     e.preventDefault();
+    
     const { title, name, body } = this.state;
   
     let time = new Date();
@@ -37,7 +36,6 @@ class CreatePost extends React.Component{
       name: '',
       submitMsg: null
     })
-    
   }
 
 
@@ -85,14 +83,14 @@ class CreatePost extends React.Component{
                   />
                 </div>
               </div>
-          </form>
-          <div className="button-container">
+              <div className="button-container">
                 <button 
                 className="submit-post"
                 type="submit"
-                onClick={this.publishPost}
                 >Submit</button>
               </div>
+          </form>
+
         </div>
       </div>
     )
@@ -104,6 +102,5 @@ const mapStateToProps = (state) => {
     posts: state.crudreducer
   }
 }
-
 
 export default connect(mapStateToProps, {createPost})(CreatePost);

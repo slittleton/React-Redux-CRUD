@@ -1,4 +1,5 @@
-export default (state=[], action) => {
+
+export default (state={}, action) => {
   switch (action.type){
     case 'FETCH_POSTS':
       return {
@@ -13,7 +14,7 @@ export default (state=[], action) => {
     case 'CREATE_POST':
       return {
         ...state, 
-        posts: [...state.posts, action.payload]
+        post: action.payload
       };
     case 'DELETE_POST':
       return {
@@ -25,7 +26,8 @@ export default (state=[], action) => {
         ...state,
         posts: state.posts.map(
           post=> post.id === action.payload.id ? post = action.payload : post
-      )};
+        )
+    };
     default: return state;
   }
 }
