@@ -19,8 +19,8 @@ export const fetchPost = (id) => {
 export const createPost = (newPostData) => {
   return async (dispatch, getState) => {
     const response = await jsonPlaceholder.post('/posts', newPostData);
-
-    dispatch({ type: 'CREATE_POST',payload: response.data})
+    console.log('from action: ' + response.data.body);
+    dispatch({ type: 'CREATE_POST', payload: response.data})
   }
 }
 

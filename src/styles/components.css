@@ -72,3 +72,18 @@ textarea::placeholder{
   text-align: center;
   justify-content: center;
 }
+
+.errorMsg {
+  color: tomato;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 1px solid tomato
+}
+.verifiedDataMsg {
+  color: green;
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  border: 1px solid green;
+}

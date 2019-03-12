@@ -2,47 +2,73 @@ import React from 'react';
 import SideMenu from '../layout/SideMenu';
 import { fetchPost, updatePost } from '../../actions';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class EditPost extends React.Component{
 state = {
   name: '',
   title: '',
   body:'',
-  id: ''
+  id: '',
+  subMessage: null,
+  msgType: null,
 }
 
   async componentDidMount(){
     const { id } = this.props.match.params;
-    await this.props.fetchPost(id)
+    await this.props.fetchPost(id);
 
-    const { name, title, body } = this.props.post.data
-
-    this.setState({
-      name: name,
-      title: title,
-      body: body,
-      id: id
-    })
-
+    const { name, title, body } = this.props.post.data;
+    this.setState({ name, title, body, id});
   }
 
-  onChange = e => this.setState({[e.target.name]: e.target.value});
+  onChange = e => {this.setState({[e.target.name]: e.target.value})}
 
   onClickUpdate = async () => {
     const {name, title, body, id} =this.state
-    if(name !=='' && title !==''&& body !==''&& id !==''){
-      this.props.updatePost(this.state)
+    if(name !=='' && title !=='' && body !=='' && id !==''){
+      await this.props.updatePost({ name, title, body, id})
     }
-
-    this.props.fetchPost(this.state.id)
+    
+    //Get post from server and pass it into verifyUpdate function
+    const response = await axios.get(`http://localhost:3001/posts/${this.state.id}`)
+    this.verifyUpdate(response.data);
   }
 
-  componentWillUpdate(){
-    console.log(this.props.post) 
+
+  verifyUpdate = (data)=> {
+    const {title, id, name, body } = this.state;
+
+    // Verify That Post On Server Matches Current Component State
+    if (  data.title === title &&
+          data.name  === name  &&
+          data.body  === body  &&
+          JSON.stringify(data.id) === id ) 
+        {
+          this.setState({
+            subMessage: 'Your Edits Have Been Submitted Successfully',
+            msgType: 'verifiedDataMsg'
+          });
+       
+          setTimeout(() => { this.setState({ subMessage: null });
+                             this.props.history.push('/');
+                           }, 2500);
+        }
+        if (  data.title !== title ||
+              data.name  !== name  ||
+              data.body  !== body  ||
+              JSON.stringify(data.id) !== id ) 
+        {
+          this.setState({
+            subMessage: 'Failed To Submit Updates', 
+            msgType: 'errorMsg'
+          });
+          setTimeout(() => { this.setState({ subMessage: null })
+           }, 2000);
+        }
   }
-  componentWillReceiveProps(nextProps){
-    console.log(nextProps) 
-  }
+
+
 
   render(){
     return(
@@ -50,6 +76,7 @@ state = {
       <SideMenu/>
       <div className="content">
         <h1 className="page-title">Edit Post</h1>
+        <div className={this.state.msgType}>{this.state.subMessage}</div>
         <form >
           <div className="form-field">
             <div>

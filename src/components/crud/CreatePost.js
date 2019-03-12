@@ -3,6 +3,7 @@ import SideMenu from '../layout/SideMenu';
 import '../../styles/components.css';
 import { createPost } from '../../actions';
 import { connect } from 'react-redux';
+import axios from 'axios';
 
 class CreatePost extends React.Component{
   state= {
@@ -14,7 +15,7 @@ class CreatePost extends React.Component{
 
   onChange = (e) => {this.setState({[e.target.name]: e.target.value})}
 
-  publishPost = (e) => {
+  publishPost = async (e) => {
     e.preventDefault();
     
     const { title, name, body } = this.state;
@@ -22,20 +23,20 @@ class CreatePost extends React.Component{
     let time = new Date();
 
     const newPost = {
-      title: title,
-      body: body,
-      name: name,
+      title, body, name,
       date: `${Number(time.getMonth())+1}-${time.getDate()}-${time.getFullYear()}`,
     }
 
-    this.props.createPost(newPost);
-    
-    this.setState({
-      title:'',
-      body:'',
-      name: '',
-      submitMsg: null
-    })
+    await this.props.createPost(newPost);
+    // const response = await axios.get(`http://localhost:3001/posts`);
+
+
+    // console.log(this.props)
+    // console.log(response.data)
+    // console.log(this.state)
+    // this.setState({
+    //   title:'', body:'', name: '', submitMsg: null
+    // })
   }
 
 
@@ -99,7 +100,7 @@ class CreatePost extends React.Component{
 
 const mapStateToProps = (state) => {
   return {
-    posts: state.crudreducer
+    post: state.crudreducer
   }
 }
 

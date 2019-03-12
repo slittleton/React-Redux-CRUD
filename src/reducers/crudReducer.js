@@ -1,5 +1,12 @@
 
-export default (state={}, action) => {
+
+const initialState = {
+  posts: [],
+  post: {},
+  id: null
+}
+
+export default (state=initialState, action) => {
   switch (action.type){
     case 'FETCH_POSTS':
       return {
@@ -12,9 +19,12 @@ export default (state={}, action) => {
         post: action.payload
       };
     case 'CREATE_POST':
+      console.log('from reducer: ' + action.payload.body);
       return {
         ...state, 
-        post: action.payload
+        posts: [...state.posts, action.payload],
+        post: action.payload,
+        id: action.payload.id
       };
     case 'DELETE_POST':
       return {
@@ -26,7 +36,8 @@ export default (state={}, action) => {
         ...state,
         posts: state.posts.map(
           post=> post.id === action.payload.id ? post = action.payload : post
-        )
+        ),
+        post: action.payload
     };
     default: return state;
   }
