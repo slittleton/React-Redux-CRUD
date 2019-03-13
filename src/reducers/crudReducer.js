@@ -11,7 +11,7 @@ export default (state=initialState, action) => {
     case 'FETCH_POSTS':
       return {
         ...state, 
-        posts: action.payload
+        posts: [...action.payload]
       };
     case 'FETCH_POST':
       return {
@@ -19,7 +19,6 @@ export default (state=initialState, action) => {
         post: action.payload
       };
     case 'CREATE_POST':
-      console.log('from reducer: ' + action.payload.body);
       return {
         ...state, 
         posts: [...state.posts, action.payload],

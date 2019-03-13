@@ -11,10 +11,10 @@ class Home extends React.Component {
   
   mostRecentPost(){
     const {posts} = this.props;
-    if(posts){
+    if(posts.length>0){
       let maxId = Math.max(...posts.map( post => { return post.id }))
       let post = posts.filter( post => post.id === maxId)[0];
-
+ 
       return (
         <div>
           <h2 className="post-title">Most Recent Post</h2>
@@ -29,7 +29,6 @@ class Home extends React.Component {
     }
   }
 
-
   render(){
     return(
       <div className="home container">
@@ -43,6 +42,7 @@ class Home extends React.Component {
 }
 
 const mapStateToProps= (state) =>{
+  
   return {
   posts: state.crudReducer.posts
   }

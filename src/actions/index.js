@@ -19,7 +19,7 @@ export const fetchPost = (id) => {
 export const createPost = (newPostData) => {
   return async (dispatch, getState) => {
     const response = await jsonPlaceholder.post('/posts', newPostData);
-    console.log('from action: ' + response.data.body);
+
     dispatch({ type: 'CREATE_POST', payload: response.data})
   }
 }
@@ -27,7 +27,7 @@ export const createPost = (newPostData) => {
 export const updatePost = (data)=> {
   return async (dispatch, getState) => {
     const response = await jsonPlaceholder.patch(`/posts/${data.id}`, data);
-
+    
     dispatch({ type: "UPDATE_POST", payload: response.data})
   }
 }
