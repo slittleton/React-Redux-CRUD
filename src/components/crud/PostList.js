@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import '../../styles/poststyle.css';
 
+import Modal from '../modal/Modal';
+
+
 class PostList extends React.Component{
   componentDidMount(){
     this.props.fetchPosts();
@@ -14,8 +17,8 @@ class PostList extends React.Component{
     this.props.deletePost(id);
   }
 
-
   renderPosts = ()=> {
+    const modalTitle= "Delete"
     const {posts} = this.props
       if(posts){
         return posts.map(post=>{
@@ -30,7 +33,12 @@ class PostList extends React.Component{
 
                 <div className="btns-wrapper">
                   <Link to={`/editpost/${post.id}`} className="btn">Edit</Link>
-                  <button className="btn" onClick={() => this.onDelete(post.id)}>Delete</button>
+                  {/* <button className="btn" onClick={() => this.onDelete(post.id)}>Delete</button> */}
+                  <Modal 
+                    modalTitle={modalTitle}
+                    id={post.id}
+                    onDelete={this.onDelete}
+                  /> 
                 </div>
 
               </div>
