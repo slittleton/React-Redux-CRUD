@@ -27,6 +27,27 @@
   justify-content: center;
   text-align: center;
 }
+.link-wrapper:hover{
+  box-shadow: 2px 2px 2px rgb(94, 94, 94);
+}
+
 hr {
   border-color: black;
+}
+
+.oauth-wrapper {
+  background-color: yellow;
+  padding: .2rem;
+  border-radius: .3rem;
+  border: 1px solid green;
+}
+.oauth-link {
+  color: rgb(255, 102, 0);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: .75rem;
+  text-align: center;
+}
+.oauth-wrapper:hover{
+  box-shadow: 2px 2px 2px rgb(94, 94, 94);
 }

@@ -1,17 +1,17 @@
 import React, { Component, Fragment } from 'react';
-import ModalContentDelPost from './ModalContentDelPost';
+import ModalContent from './ModalContent';
 
 
 class Modal extends Component {
   state = { modalOpen: false }
 
-  clickOpenModal = () => { this.setState({ modalOpen: true }); console.log('clicked true')}
-  clickCloseModal = () => { this.setState({ modalOpen: false }); console.log('clicked false')}
+  clickOpenModal = () => { this.setState({ modalOpen: true })}
+  clickCloseModal = () => { this.setState({ modalOpen: false })}
 
   render() {
     return (
       <Fragment>
-        {console.log(this.props.onDelete)}
+        
         <button 
           className="btn model-open-btn" 
           onClick={this.clickOpenModal}>
@@ -20,10 +20,9 @@ class Modal extends Component {
         
         {
           this.state.modalOpen &&
-          <ModalContentDelPost
-            id={this.props.id}
-            onDelete={this.props.onDelete}
+          <ModalContent
             clickCloseModal={this.clickCloseModal}
+            content={this.props.children}
           />
         }
       </Fragment>

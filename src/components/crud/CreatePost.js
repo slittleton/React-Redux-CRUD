@@ -1,14 +1,19 @@
 import React from 'react';
-import SideMenu from '../layout/SideMenu';
+import { connect } from 'react-redux';
+
 import '../../styles/components.css';
 import { createPost } from '../../actions';
-import { connect } from 'react-redux';
+
+import SideMenu from '../layout/SideMenu';
+import ShortInputForm from '../inputforms/ShortInputForm';
+import LongInputForm from '../inputforms/LongInputForm';
 
 class CreatePost extends React.Component{
   state= {
     title: '',
     body: '',
-    name: ''
+    name: '',
+    error: ''
   }
 
   onChange = (e) => {this.setState({[e.target.name]: e.target.value})}
@@ -17,16 +22,25 @@ class CreatePost extends React.Component{
     e.preventDefault();
     
     const { title, name, body } = this.state;
-    let time = new Date();
-
-    const newPost = {
-      title, body, name,
-      date: `${Number(time.getMonth())+1}-${time.getDate()}-${time.getFullYear()}`,
+    if ( title !== '' && body !== '' && name !== ''){
+      let time = new Date();
+      const newPost = {
+        title, body, name,
+        date: `${Number(time.getMonth())+1}-${time.getDate()}-${time.getFullYear()}`,
+      }
+       this.props.createPost(newPost);
+    } 
+    if ( title === '' || body === '' || name === '') {
+      this.noEmptyFields()
     }
-     this.props.createPost(newPost);
   }
 
-  verifyNewPost (newProps, callback){
+  noEmptyFields(){
+    this.setState({error: 'All Fields Must Not Be Filled'})
+    setTimeout(()=>{this.setState({error: ''})}, 2000)
+  }
+
+  verifyNewPost (newProps, submissionMessage){
     const { title, body, name} = this.state;
     const { post } = newProps;
     if( post.title === title && 
@@ -34,26 +48,33 @@ class CreatePost extends React.Component{
         post.name  === name  &&
         Boolean(post.id) === true ){
 
-      callback ('Successfully Posted', 'verifiedDataMsg','/', newProps)
+      submissionMessage('Successfully Posted', 'verifiedDataMsg','/');
+      this.navigate('/');
+
     } else {
-      callback ('Failed To Post', 'errorMsg', '/', newProps)
+      submissionMessage('Failed To Post', 'errorMsg');
+      this.navigate(null);
     }
   }
+ navigate(route){
+  setTimeout(()=>{
+    if (route) {this.props.history.push(route)
+    } else if (route === null){window.location.reload()};
+  }, 2001);
+ }
 
   render(){
     let subMessage = null;
     let msgType = null;
 
-    function setSubmissionMessage (msg, cssClass, route, props){
+    function submissionSuccess (msg, cssClass,route){
       subMessage = msg;
       msgType = cssClass;
-      setTimeout(()=>{
-        subMessage = null;
-        msgType = null;
-        if ( route ){ props.history.push(route) }
-      }, 2500)
+      setTimeout(()=>{ subMessage = null; msgType = null }, 2000)
     }
+
     const { post } = this.props;
+
 
     return(
       <div className="create-post container">
@@ -61,54 +82,40 @@ class CreatePost extends React.Component{
         <div className="content">
           <h1 className="page-title">Create A New Post</h1>
           {/* Verify if the post is successful and inform user */}
-          {post.id ? this.verifyNewPost(this.props, setSubmissionMessage ): null}
+          { post.id ? this.verifyNewPost(this.props, submissionSuccess) : null }
           <div className={msgType}>{subMessage}</div>
           <form onSubmit={this.publishPost}>
-            <div className="form-field">
-              <div>
-              </div>
-              <div className="field">
-                <input 
-                  className="newpost-input text-title" 
-                  type="text" 
-                  name="title"
-                  placeholder="Enter Title"
-                  onChange={this.onChange}
-                  value={this.state.title}
-                /> 
-              </div>
-              <div className="field">
-                <input 
-                  className="newpost-input text-title" 
-                  type="text" 
-                  name="name"
-                  placeholder="Enter Name"
-                  onChange={this.onChange}
-                  value={this.state.name}
-                /> 
-              </div>
-
-            </div>
-            <div className="form-field">
-                <div className="field">
-                <textarea 
-                    className="newpost-input text-body" 
-                    placeholder="Enter Text Body Here"
-                    type="text"
-                    name="body"
-                    onChange={this.onChange}
-                    value={this.state.body}
-                  />
-                </div>
-              </div>
+              <ShortInputForm
+                className="newpost-input text-title" 
+                type="text" 
+                name="title"
+                placeholder="Enter Title"
+                onChange={this.onChange}
+                value={this.state.title}
+                error={this.state.error}
+              />
+              <ShortInputForm 
+                className="newpost-input text-title" 
+                type="text" 
+                name="name"
+                placeholder="Enter Name"
+                onChange={this.onChange}
+                value={this.state.name}
+                error={this.state.error}
+              /> 
+              <LongInputForm 
+                className="newpost-input text-body" 
+                placeholder="Enter Text Body Here"
+                type="text"
+                name="body"
+                onChange={this.onChange}
+                value={this.state.body}
+                error={this.state.error}
+              />
               <div className="button-container">
-                <button 
-                className="submit-post"
-                type="submit"
-                >Submit</button>
+                <button className="submit-post"type="submit">Submit</button>
               </div>
           </form>
-
         </div>
       </div>
     )

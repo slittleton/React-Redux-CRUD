@@ -1,5 +1,8 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
 
+// =======================================================
+// ==================== CRUD REDUCERS ====================
+// =======================================================
 export const fetchPosts = () => {
   return async (dispatch, getState) =>{
     const response = await jsonPlaceholder.get('/posts');
@@ -37,5 +40,21 @@ export const deletePost = (id) => {
     await jsonPlaceholder.delete(`/posts/${id}`);
 
     dispatch({ type: 'DELETE_POST', payload: id})
+  }
+}
+
+// ========================================================
+// ==================== OAUTH REDUCERS ====================
+// ========================================================
+export const signIn = () => {
+  return { 
+    type: 'SIGN_IN', 
+    payload: 'USER_ID' 
+  }
+}
+
+export const signOut = () => {
+  return {
+    type: 'SIGN_OUT'
   }
 }

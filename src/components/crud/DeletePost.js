@@ -1,17 +1,24 @@
 import React from 'react';
-import SideMenu from '../layout/SideMenu';;
+import '../../styles/poststyle.css';
+import { connect } from 'react-redux';
+import { deletePost } from '../../actions';;
 
-class DeletePost extends React.Component {
-  render(){
+
+const DeletePost = (props) => {
     return(
       <div className="delete-post container">
-        <SideMenu/>
-        <div className="content">
-          deletePost
+        <div className="confirm-del-q">
+          <p className="modal-body">Confirm Delete</p>
+          <div>
+            <button 
+              className="modal-btn" 
+              onClick={()=>props.deletePost(props.id)}
+            >Confirm
+            </button>
+          </div>
         </div>
       </div>
     )
-  }
 }
 
-export default DeletePost;
+export default connect(null,{deletePost})(DeletePost);

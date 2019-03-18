@@ -1,24 +1,19 @@
 import React from 'react';
-import SideMenu from '../layout/SideMenu';
-import { fetchPosts, deletePost } from '../../actions';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
-import '../../styles/poststyle.css';
 
+import { fetchPosts, deletePost } from '../../actions';
+import SideMenu from '../layout/SideMenu';
+import DeletePost from './DeletePost';
 import Modal from '../modal/Modal';
-
+import '../../styles/poststyle.css';
 
 class PostList extends React.Component{
   componentDidMount(){
     this.props.fetchPosts();
   }
 
-  onDelete = (id) => {
-    this.props.deletePost(id);
-  }
-
   renderPosts = ()=> {
-    const modalTitle= "Delete"
     const {posts} = this.props
       if(posts){
         return posts.map(post=>{
@@ -26,21 +21,15 @@ class PostList extends React.Component{
             <div key={post.id} className="posts-container">
               <h2>{post.title}</h2>
               <div className="btns-info">
-
                 <div className="info">
                 <p>By: {post.name} on {post.date}</p>
                 </div>
-
                 <div className="btns-wrapper">
                   <Link to={`/editpost/${post.id}`} className="btn">Edit</Link>
-                  {/* <button className="btn" onClick={() => this.onDelete(post.id)}>Delete</button> */}
-                  <Modal 
-                    modalTitle={modalTitle}
-                    id={post.id}
-                    onDelete={this.onDelete}
-                  /> 
+                    <Modal modalTitle="Delete" className="m1">
+                      <DeletePost id={post.id}/>
+                    </Modal>
                 </div>
-
               </div>
               <p>{post.body}</p>
               <hr/>

@@ -20,6 +20,10 @@ const SideMenu = () => {
         <div className="link-wrapper">
           <Link className="link" to="/createpost">Create Post</Link>
         </div>
+        <div className="oauth-wrapper">
+        <Link to='/' className="oauth-link"><div>login with Google</div></Link>
+        </div>
+       
       </div>
 
     </div>

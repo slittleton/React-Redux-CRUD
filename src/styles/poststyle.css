@@ -21,7 +21,8 @@
   justify-content: space-between;
 }
 .btns-wrapper{
-  float: left;
+  display:flex;
+  justify-content: flex-end;
 }
 
 .space-around-modal {
@@ -36,17 +37,48 @@
   margin-top: 35%;
   display: flex;
   justify-content: center;
-  height: 25vw;
+  box-shadow: 2px 2px 2px rgba(7, 7, 7, 0.788);
+
 }
 
 .modal-box{
-  background-color: rgb(116, 116, 116);
-  width: 40vw;
-  box-shadow: 2px 2px 2px rgba(7, 7, 7, 0.788);
+  background-color: black;
   text-align: center;
-  padding: .5rem;
+  height: 15vh;
+}
+
+.confirm-del-q {
+  color: rgba(212, 255, 210);
+  background-color: black;
+  padding: 1rem;
+  /* box-shadow: 2px 2px 2px rgba(7, 7, 7, 0.788); */
+}
+.x-btn {
+  text-decoration: none;
+  background-color: rgb(212, 255, 210);
+  color: black;
+  font-size: 1rem;
+  font-family: helvetica;
+  border: none;
+  display: flex;
+  cursor: pointer;
+  padding: .3rem;
+  margin: .1rem 0 0 .1rem;
+}
+.modal-content {
+  font-size: 1.3rem;
+}
+.modal-btn {
+  text-decoration: none;
+  background-color: rgb(212, 255, 210);
+  color: black;
+  font-size: 1rem;
+  font-family: helvetica;
+  cursor: pointer;
+  border: none;
+  margin-bottom: 0;
 
 }
-.modal-body {
-  color: rgba(212, 255, 210)
+.modal-btn:hover,  .x-btn:hover{
+  box-shadow: 2px 2px 2px white;
 }

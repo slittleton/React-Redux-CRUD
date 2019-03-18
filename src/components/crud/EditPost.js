@@ -1,8 +1,11 @@
 import React from 'react';
-import SideMenu from '../layout/SideMenu';
-import { fetchPost, updatePost } from '../../actions';
 import { connect } from 'react-redux';
 import axios from 'axios';
+
+import { fetchPost, updatePost } from '../../actions';
+import SideMenu from '../layout/SideMenu';
+import ShortInputForm from '../inputforms/ShortInputForm';
+import LongInputForm from '../inputforms/LongInputForm';
 
 class EditPost extends React.Component{
 state = {
@@ -68,8 +71,6 @@ state = {
         }
   }
 
-
-
   render(){
     return(
       <div className="edit-post container">
@@ -78,11 +79,7 @@ state = {
         <h1 className="page-title">Edit Post</h1>
         <div className={this.state.msgType}>{this.state.subMessage}</div>
         <form >
-          <div className="form-field">
-            <div>
-            </div>
-            <div className="field">
-              <input 
+              <ShortInputForm 
                 className="newpost-input text-title" 
                 type="text" 
                 name="title"
@@ -90,9 +87,7 @@ state = {
                 onChange={this.onChange}
                 value={this.state.title}
               /> 
-            </div>
-            <div className="field">
-              <input 
+              <ShortInputForm 
                 className="newpost-input text-title" 
                 type="text" 
                 name="name"
@@ -100,12 +95,7 @@ state = {
                 onChange={this.onChange}
                 value={this.state.name}
               /> 
-            </div>
-
-          </div>
-          <div className="form-field">
-              <div className="field">
-              <textarea 
+              <LongInputForm 
                   className="newpost-input text-body" 
                   placeholder="Enter Text Body Here"
                   type="text"
@@ -113,18 +103,16 @@ state = {
                   onChange={this.onChange}
                   value={this.state.body}
                 />
-              </div>
-            </div>
         </form>
         <div className="button-container">
               <button 
-              className="submit-post"
-              type="submit"
-              onClick={this.onClickUpdate}
-              >Submit</button>
+                className="submit-post" 
+                type="submit" 
+                onClick={this.onClickUpdate}
+              >Submit
+              </button>
             </div>
       </div>
-      
     </div>
     )
   }
