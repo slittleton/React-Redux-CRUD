@@ -1,4 +1,10 @@
-
+import {
+  FETCH_POST,
+  FETCH_POSTS, 
+  CREATE_POST, 
+  UPDATE_POST,
+  DELETE_POST,
+} from '../actions/actionTypes';
 
 const initialState = {
   posts: [],
@@ -8,29 +14,29 @@ const initialState = {
 
 export default (state=initialState, action) => {
   switch (action.type){
-    case 'FETCH_POSTS':
+    case FETCH_POSTS:
       return {
         ...state, 
         posts: [...action.payload]
       };
-    case 'FETCH_POST':
+    case FETCH_POST:
       return {
         ...state, 
         post: action.payload
       };
-    case 'CREATE_POST':
+    case CREATE_POST:
       return {
         ...state, 
         posts: [...state.posts, action.payload],
         post: action.payload,
         id: action.payload.id
       };
-    case 'DELETE_POST':
+    case DELETE_POST:
       return {
         ...state, 
         posts: state.posts.filter(post => post.id !== action.payload)
       };
-    case 'UPDATE_POST':
+    case UPDATE_POST:
       return {
         ...state,
         posts: state.posts.map(
