@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import '../../styles/sidemenu.css';
+import GoogleAuth from '../GoogleAuth';
 
 const SideMenu = () => {
   return(
@@ -20,10 +21,9 @@ const SideMenu = () => {
         <div className="link-wrapper">
           <Link className="link" to="/createpost">Create Post</Link>
         </div>
-        <div className="oauth-wrapper">
-        <Link to='/' className="oauth-link"><div>login with Google</div></Link>
-        </div>
-       
+
+        <GoogleAuth/>
+ 
       </div>
 
     </div>

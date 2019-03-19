@@ -36,7 +36,7 @@ class CreatePost extends React.Component{
   }
 
   noEmptyFields(){
-    this.setState({error: 'All Fields Must Not Be Filled'})
+    this.setState({error: 'All Fields Must Be Filled'})
     setTimeout(()=>{this.setState({error: ''})}, 2000)
   }
 

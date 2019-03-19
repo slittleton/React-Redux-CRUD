@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import crudlogo from './crudlogo.png';
-import GoogleAuth from '../GoogleAuth';
 
 const Header = () => {
   return (
@@ -12,7 +11,7 @@ const Header = () => {
           <img src={crudlogo} alt="#" className="logo"/>
         </Link>
       </div>
-    <GoogleAuth/>
+    
     </div>
   )
 }

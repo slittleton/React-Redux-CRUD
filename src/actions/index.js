@@ -46,10 +46,10 @@ export const deletePost = (id) => {
 // ========================================================
 // ==================== OAUTH REDUCERS ====================
 // ========================================================
-export const signIn = () => {
+export const signIn = (userId) => {
   return { 
     type: 'SIGN_IN', 
-    payload: 'USER_ID' 
+    payload: userId 
   }
 }
 

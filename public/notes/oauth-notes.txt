@@ -1,0 +1,77 @@
+oauth key for this project
+518257510661-96ki5slnuir29qco5s3vu727siqasgil.apps.googleusercontent.com
+
+To start a project that uses google oauth go To
+
+https://console.developers.google.com
+
+1) create a new project - give it a name 
+  
+2) find credentials area and add credentials 
+  -select that you want to generate an OAuth client ID
+
+3) install google's API library using the OAuth client ID
+  to do this add a script tag with the url for google's oauth api to index.html 
+  in your public folder
+  <script src="https://apis.google.com/js/api.js"></script>
+
+4) test by writing command in the terminal: gapi
+
+5) make a google auth class component and import it into a component where you 
+  want to use it, Header component in this case
+
+6) Load client portion of gapi library by calling window.gapi.load('client:auth2');
+
+7) use callback to get informed on when from the api call delivers client info to app
+  use your client id in the .init(). Also include a scope. Scope is what parts of the user's
+  profile that you want access to. email is one example
+
+    window.gapi.load('client:auth2', ()=>{
+      window.gapi.client.init({
+        clientId: YOUR_CLIENT_ID_HERE
+        scope: ''
+      })
+    });
+
+8) info about this library can be found here:
+https://developers.google.com/api-client-library/javascript/reference/referencedocs
+
+or search for gapi documentation
+
+9) gapi.auth2.getAuthInstance()
+returns a googleAuth object, has a lot of methods attached that allow you to do things
+like check if the user is signed in or signed out.
+
+10) handle promis with .then()
+
+componentDidMount() {
+  window.gapi.load('client:auth2', ()=>{
+    window.gapi.client.init({
+      clientId: '518257510661-96ki5slnuir29qco5s3vu727siqasgil.apps.googleusercontent.com',
+      scope: 'email'
+    }).then(()=>{ // handle promise
+      this.auth = window.gapi.auth2.getAuthInstance();  // get access to auth object,
+      this.onAuthChange(this.auth.isSignedIn.get());    // then use it to change state
+      this.auth.isSignedIn.listen(this.onAuthChange);
+    });
+  });
+}
+
+
+
+
+gapi useful commands
+
+gapi.load('client:auth2')
+gapi.client.init({clientId: 'YOUR CLIENT ID GOES HERE'})
+
+gapi.auth2.getAuthInstance().signOut()
+gapi.auth2.getAuthInstance().signIn()
+
+gapi.auth2.getAuthInstance().isSignedIn.get()
+gapi.auth2.getAuthInstance().isSignedOut.get()
+
+---------- GAPI contains an id for each user that you can use in your app
+gapi.auth2.getAuthInstance().currentUser
+gapi.auth2.getAuthInstance().currentUser.get().getId()
+
