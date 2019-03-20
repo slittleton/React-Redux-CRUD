@@ -6,7 +6,6 @@ import { fetchPosts, deletePost } from '../../actions';
 import SideMenu from '../layout/SideMenu';
 import DeletePost from './DeletePost';
 import Modal from '../modal/Modal';
-import '../../styles/poststyle.css';
 
 class PostList extends React.Component{
   componentDidMount(){
@@ -19,20 +18,25 @@ class PostList extends React.Component{
         return posts.map(post=>{
           return(
             <div key={post.id} className="posts-container">
-              <h2>{post.title}</h2>
-              <div className="btns-info">
-                <div className="info">
-                <p>By: {post.name} on {post.date}</p>
-                </div>
-                <div className="btns-wrapper">
-                  <Link to={`/editpost/${post.id}`} className="btn">Edit</Link>
-                    <Modal modalTitle="Delete" className="m1">
+
+              
+              <div className="box">
+              <p className="post-title">{post.title}</p>
+                <div className="postname-wrapper">
+                  <p className="post-name">By: {post.name} on {post.date}</p>
+            
+                  <div className="btn-wrapper">
+                    <Link to={`/editpost/${post.id}`} className="btn-wrapper btn">Edit</Link>
+                    <Modal modalTitle="Delete" className="btn-wrapper">
                       <DeletePost id={post.id}/>
                     </Modal>
-                </div>
+                  </div>
+                  </div>
+
+                
               </div>
-              <p>{post.body}</p>
-              <hr/>
+              <p className="post-body">{post.body}</p>
+
             </div>
           )
         })
@@ -42,10 +46,11 @@ class PostList extends React.Component{
   render(){
     return(
       <div className="post-list container">
-        <SideMenu/>
+        <div classname="grid-box"></div>
         <div className="content">
           { this.renderPosts() }
         </div>
+        <div classname="grid-box"></div>
       </div>
     )
   }

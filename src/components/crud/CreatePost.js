@@ -1,7 +1,5 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
-import '../../styles/components.css';
 import { createPost } from '../../actions';
 
 import SideMenu from '../layout/SideMenu';
@@ -78,7 +76,6 @@ class CreatePost extends React.Component{
 
     return(
       <div className="create-post container">
-        <SideMenu/>
         <div className="content">
           <h1 className="page-title">Create A New Post</h1>
           {/* Verify if the post is successful and inform user */}

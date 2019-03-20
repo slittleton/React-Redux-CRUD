@@ -74,7 +74,6 @@ state = {
   render(){
     return(
       <div className="edit-post container">
-      <SideMenu/>
       <div className="content">
         <h1 className="page-title">Edit Post</h1>
         <div className={this.state.msgType}>{this.state.subMessage}</div>

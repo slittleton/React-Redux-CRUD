@@ -12,11 +12,11 @@ class Modal extends Component {
     return (
       <Fragment>
         
-        <button 
+        <div 
           className="btn model-open-btn" 
           onClick={this.clickOpenModal}>
           {this.props.modalTitle}
-        </button>
+        </div>
         
         {
           this.state.modalOpen &&

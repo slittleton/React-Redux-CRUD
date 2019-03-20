@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/poststyle.css';
 import { connect } from 'react-redux';
 import { deletePost } from '../../actions';;
 

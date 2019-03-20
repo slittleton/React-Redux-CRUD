@@ -1,30 +1,27 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../../styles/sidemenu.css';
 import GoogleAuth from '../GoogleAuth';
+import '../../styles/app.css';
 
 const SideMenu = () => {
   return(
     <div className="side-menu">
 
-      <div className="menu-title">
-        Menu
-      </div>
-      <hr/>
-      <div className="links">
+ 
         <div className="link-wrapper">
           <Link className="link" to="/">Home</Link>
         </div>
         <div className="link-wrapper">
-          <Link className="link" to="/postlist">List of Posts</Link>
+          <Link className="link" to="/postlist">Posts</Link>
         </div>
         <div className="link-wrapper">
-          <Link className="link" to="/createpost">Create Post</Link>
+          <Link className="link" to="/createpost">Create</Link>
         </div>
+        <div className="link-wrapper">
+          <GoogleAuth/>
+        </div>
+        
 
-        <GoogleAuth/>
- 
-      </div>
 
     </div>
   )

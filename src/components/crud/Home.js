@@ -2,7 +2,6 @@ import React from 'react';
 import SideMenu from '../layout/SideMenu';
 import { connect } from 'react-redux';
 import { fetchPosts, fetchPost } from '../../actions';
-import '../../styles/components.css';
 
 class Home extends React.Component {
   componentDidMount(){
@@ -32,7 +31,6 @@ class Home extends React.Component {
   render(){
     return(
       <div className="home container">
-        <SideMenu/>
         <div className="content">
           {this.mostRecentPost()}
         </div>

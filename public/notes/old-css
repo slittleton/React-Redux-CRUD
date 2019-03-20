@@ -1,3 +1,84 @@
+body{
+  margin: 0;
+  padding: 0;
+  background-color: black;
+  color: white;
+  font-family: calibri;
+}
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3rem;
+  background-color: rgb(212, 255, 210);
+  margin: 1.5rem 0 1rem 0;
+  color: black;
+}
+.logo{
+  width: 4rem;
+  margin: 0 1rem 0 1rem;
+  float: right;
+  padding: 1rem;
+}
+
+.side-menu{
+  width: 20%;
+  background-color: black;
+  margin: .5rem;
+  padding: .5rem .5rem .5rem .5rem
+}
+.link{
+  color: pink;
+  text-decoration: none;
+  color: black;
+  font-family: calibri;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.menu-title {
+  font-Size: 1.5rem;
+  font-weight: bold;
+  justify-content: center;
+  text-align: center;
+  color: black;
+}
+
+.link-wrapper {
+  margin: .5rem 0 .5rem 0;
+  border-radius: .3rem;
+  border: 1px solid green;
+  justify-content: center;
+  text-align: center;
+}
+.link-wrapper:hover{
+  box-shadow: 2px 2px 2px rgb(94, 94, 94);
+}
+
+hr {
+  border-color: black;
+}
+
+.oauth-wrapper {
+  background-color: yellow;
+  padding: .2rem;
+  border-radius: .3rem;
+  border: 1px solid green;
+  display: flex;
+  justify-content: center;
+  color: rgb(255, 102, 0);
+  text-decoration: none;
+  font-weight: bold;
+  font-size: .75rem;
+  text-align: center;
+  width: 100%;
+  cursor: pointer
+}
+
+.oauth-wrapper:hover{
+  box-shadow: 2px 2px 2px rgb(94, 94, 94);
+}
+/* ================ POSTS ===================== */
 .posts-container {
   padding: 0 1rem 0 1rem;
 }
@@ -24,7 +105,7 @@
   display:flex;
   justify-content: flex-end;
 }
-
+/* =============MODAL================== */
 .space-around-modal {
   position: fixed;
   top: 0;
@@ -51,8 +132,8 @@
   color: rgba(212, 255, 210);
   background-color: black;
   padding: 1rem;
-  /* box-shadow: 2px 2px 2px rgba(7, 7, 7, 0.788); */
 }
+
 .x-btn {
   text-decoration: none;
   background-color: rgb(212, 255, 210);

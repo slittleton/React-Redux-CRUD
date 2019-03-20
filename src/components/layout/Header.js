@@ -1,16 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import crudlogo from './crudlogo.png';
+import SideMenu from './SideMenu';
+import vzlogo from '../../assets/vzlogo.png';
+import vzword from '../../assets/vz-word.png';
 
 const Header = () => {
   return (
     <div className="header">
-      <h1 className="banner-title">CRUD Practice Project 0</h1>
-      <div className="link-container">
-        <Link to='/' className="link">
-          <img src={crudlogo} alt="#" className="logo"/>
-        </Link>
+      <img src={vzword} alt="#" className="word-logo"/>
+      
+      <div className="links">
+      <SideMenu/>
+      <Link to='/' className="logo-link">
+        <img src={vzlogo} alt="#" className="logo"/>
+      </Link>
       </div>
+
+
     
     </div>
   )
