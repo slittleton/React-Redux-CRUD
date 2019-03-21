@@ -2,8 +2,7 @@ import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom'
 import '../styles/app.css';
 
-import Header from './layout/Header';
-
+import LandingPage from './layout/LandingPage';
 import Home from './crud/Home';
 import PostList from './crud/PostList';
 import EditPost from './crud/EditPost';
@@ -15,8 +14,8 @@ const App = () => {
     <div className="app">
     <BrowserRouter>
       <div className="routes">
-        <Header/>
-        <Route path="/" exact component={Home} />
+        <Route path="/" exact component={LandingPage} />
+        <Route path="/home" exact component={Home} />
         <Route path="/postlist" exact component={PostList} />
         <Route path="/editpost/:id" exact component={EditPost} />
         <Route path="/deletepost/:id" exact component={DeletePost} />

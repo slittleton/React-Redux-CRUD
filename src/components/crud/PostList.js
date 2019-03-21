@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import { fetchPosts, deletePost } from '../../actions';
-import SideMenu from '../layout/SideMenu';
 import DeletePost from './DeletePost';
 import Modal from '../modal/Modal';
+import Header from '../layout/Header';
 
 class PostList extends React.Component{
   componentDidMount(){
@@ -45,12 +45,17 @@ class PostList extends React.Component{
 
   render(){
     return(
+      <div>
+        <Header/>
       <div className="post-list container">
         <div classname="grid-box"></div>
+
         <div className="content">
           { this.renderPosts() }
         </div>
+        
         <div classname="grid-box"></div>
+      </div>
       </div>
     )
   }

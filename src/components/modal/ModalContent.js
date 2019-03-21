@@ -5,9 +5,9 @@ const ModalContent = ({clickCloseModal, id, onDelete, content}) => {
   return ReactDOM.createPortal(
     <div className="space-around-modal">
       <div className="modal-box">
-      <button className="x-btn" onClick={clickCloseModal} >X</button>
+      
         <div className="modal-content">
-
+        <button className="x-btn" onClick={clickCloseModal} >X</button>
           {content}
         
         </div>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 
 import { fetchPost, updatePost } from '../../actions';
-import SideMenu from '../layout/SideMenu';
+import Header from '../layout/Header';
 import ShortInputForm from '../inputforms/ShortInputForm';
 import LongInputForm from '../inputforms/LongInputForm';
 
@@ -73,7 +73,12 @@ state = {
 
   render(){
     return(
-      <div className="edit-post container">
+      <div>
+        <Header/>
+
+      
+      <div className="edit-post centering">
+      <div className="grid-box"></div>
       <div className="content">
         <h1 className="page-title">Edit Post</h1>
         <div className={this.state.msgType}>{this.state.subMessage}</div>
@@ -105,13 +110,15 @@ state = {
         </form>
         <div className="button-container">
               <button 
-                className="submit-post" 
+                className="submit-btn btn" 
                 type="submit" 
                 onClick={this.onClickUpdate}
               >Submit
               </button>
             </div>
       </div>
+      <div className="grid-box"></div>
+    </div>
     </div>
     )
   }

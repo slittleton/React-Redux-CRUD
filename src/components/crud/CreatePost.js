@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { createPost } from '../../actions';
 
-import SideMenu from '../layout/SideMenu';
+import Header from '../layout/Header';
 import ShortInputForm from '../inputforms/ShortInputForm';
 import LongInputForm from '../inputforms/LongInputForm';
 
@@ -13,6 +13,8 @@ class CreatePost extends React.Component{
     name: '',
     error: ''
   }
+
+  componentDidMount(){this.setState({error: ''})}
 
   onChange = (e) => {this.setState({[e.target.name]: e.target.value})}
 
@@ -75,13 +77,19 @@ class CreatePost extends React.Component{
 
 
     return(
-      <div className="create-post container">
+      <div>
+        <Header/>
+      
+      <div className="create-post centering">
+   
         <div className="content">
-          <h1 className="page-title">Create A New Post</h1>
+          <div className="section-title">Create A New Post</div>
           {/* Verify if the post is successful and inform user */}
-          { post.id ? this.verifyNewPost(this.props, submissionSuccess) : null }
+          { post.id && this.state.title !== '' ? this.verifyNewPost(this.props, submissionSuccess) : null }
           <div className={msgType}>{subMessage}</div>
-          <form onSubmit={this.publishPost}>
+          <form onSubmit={this.publishPost} className="form-area">
+          <div>
+          
               <ShortInputForm
                 className="newpost-input text-title" 
                 type="text" 
@@ -110,10 +118,15 @@ class CreatePost extends React.Component{
                 error={this.state.error}
               />
               <div className="button-container">
-                <button className="submit-post"type="submit">Submit</button>
+                <button className="submit-btn btn"type="submit">Submit</button>
               </div>
+
+            </div>
+
           </form>
         </div>
+
+      </div>
       </div>
     )
   }

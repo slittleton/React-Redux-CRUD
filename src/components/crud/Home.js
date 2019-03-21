@@ -1,5 +1,5 @@
 import React from 'react';
-import SideMenu from '../layout/SideMenu';
+import Header from '../layout/Header';
 import { connect } from 'react-redux';
 import { fetchPosts, fetchPost } from '../../actions';
 
@@ -16,12 +16,11 @@ class Home extends React.Component {
  
       return (
         <div>
-          <h2 className="post-title">Most Recent Post</h2>
+          <div className="section-title">Most Recent Post</div>
           <div key={post.id} className="posts-container">
             <h3 className="post-title">{post.title}</h3>
             <p>By: {post.name} on {post.date}</p>
             <p>{post.body}</p>
-            <hr/>
           </div>
         </div>
       )
@@ -30,10 +29,15 @@ class Home extends React.Component {
 
   render(){
     return(
-      <div className="home container">
+      <div>
+      <Header/>
+      <div className="home ">
+        <div className="grid-box"></div>
         <div className="content">
           {this.mostRecentPost()}
         </div>
+        <div className="grid-box"></div>
+      </div>
       </div>
     )
   }

@@ -33,11 +33,11 @@ onSignOut = () => {
 
   renderAuthButton(){
      if (this.props.signInStatus === null) {
-       return <div className="link oauth-wrapper">LOADING</div>
+       return <div className="oauth-wrapper landing-oauth">LOADING</div>
      } else if ( this.props.signInStatus){
-       return  <div className="link oauth-wrapper" onClick={this.onSignOut}>Sign Out</div>
+       return  <div className="oauth-wrapper landing-oauth" onClick={this.onSignOut}>Sign Out</div>
      } else if(this.props.signInStatus=== false){
-       return <div className="link oauth-wrapper" onClick={this.onSignIn}>Sign In With Google</div>
+       return <div className="oauth-wrapper landing-oauth" onClick={this.onSignIn}>Sign In With Google</div>
      }
   }
 

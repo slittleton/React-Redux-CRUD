@@ -7,9 +7,11 @@ const SideMenu = () => {
   return(
     <div className="side-menu">
 
- 
         <div className="link-wrapper">
-          <Link className="link" to="/">Home</Link>
+          <Link className="link" to="/">Landing</Link>
+        </div>
+        <div className="link-wrapper">
+          <Link className="link" to="/home">Home</Link>
         </div>
         <div className="link-wrapper">
           <Link className="link" to="/postlist">Posts</Link>
