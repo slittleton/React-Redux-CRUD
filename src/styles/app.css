@@ -80,7 +80,7 @@ button:focus {
   border-bottom: 2px solid rgb(36, 255, 0)
 }
 
-.oauth-wrapper{
+.menu-oauth{
   text-decoration: none;
   color: white;
   font-family: calibri;
@@ -90,7 +90,7 @@ button:focus {
   border: none;
   cursor: pointer;
 }
-.oauth-wrapper:hover{
+.menu-oauth:hover{
   /* border-bottom: 2px solid rgb(36, 255, 0) */
   background-color: magenta;
 }
@@ -205,29 +205,30 @@ margin: 1rem;
 }
 /* =============MODAL================== */
 .space-around-modal {
+  display: flex;
+  justify-content: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   z-index: 10;
+  margin-top: 20%;
   transform: translateZ(0);
   background-color: none;
-  margin-top: 20%;
+}
+.modal-body {
   display: flex;
-  justify-content: flex-end;
-}
-
-.modal-box{
   text-align: center;
-  height: 15vh;
-  width: 60vw;
 }
 
-.confirm-del-q {
-  color: rgb(36, 255, 0);
-  background-color: rgb(0, 0, 0);
-  padding: 1rem;
+.modal-content {
+  background-color: black;
+  padding: .25rem;
+  font-size: 1.3rem;
+  font-weight: bold;
+  width: 10vw;
+
   box-shadow: 3px 3px 3px rgb(11, 80, 0);
 }
 .x-btn {
@@ -240,16 +241,18 @@ margin: 1rem;
   display: flex;
   cursor: pointer;
   padding: .3rem;
-  margin: .1rem 0 0 .1rem;
+  margin: .3rem 0 0 .3rem;
   position: absolute;
   left: center;
   border-radius: 50%;
   
 }
 
-.modal-content {
-  font-size: 1.3rem;
-  font-weight: bold;
+.confirm-del-q {
+  color: rgb(36, 255, 0);
+  background-color: rgb(0, 0, 0);
+  padding: 1rem;
+  
 }
 
 .modal-btn {
@@ -315,7 +318,7 @@ display: flex;
 justify-content: center;
 text-align: center;
 border-radius: 50%;
-
+cursor: pointer;
 padding: .5rem;
 align-items: center;
 }

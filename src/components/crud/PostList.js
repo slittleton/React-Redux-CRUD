@@ -48,13 +48,13 @@ class PostList extends React.Component{
       <div>
         <Header/>
       <div className="post-list container">
-        <div classname="grid-box"></div>
+        <div className="grid-box"></div>
 
         <div className="content">
           { this.renderPosts() }
         </div>
         
-        <div classname="grid-box"></div>
+        <div className="grid-box"></div>
       </div>
       </div>
     )

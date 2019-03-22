@@ -8,16 +8,12 @@ const Header = () => {
   return (
     <div className="header">
       <img src={vzword} alt="#" className="word-logo"/>
-      
       <div className="links">
       <SideMenu/>
       <Link to='/' className="logo-link">
         <img src={vzlogo} alt="#" className="logo"/>
       </Link>
       </div>
-
-
-    
     </div>
   )
 }

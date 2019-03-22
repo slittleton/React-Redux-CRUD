@@ -54,7 +54,7 @@ state = {
           });
        
           setTimeout(() => { this.setState({ subMessage: null });
-                             this.props.history.push('/');
+                             this.props.history.push('/home');
                            }, 2500);
         }
         if (  data.title !== title ||

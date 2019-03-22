@@ -6,7 +6,6 @@ import '../../styles/app.css';
 const SideMenu = () => {
   return(
     <div className="side-menu">
-
         <div className="link-wrapper">
           <Link className="link" to="/">Landing</Link>
         </div>
@@ -20,11 +19,8 @@ const SideMenu = () => {
           <Link className="link" to="/createpost">Create</Link>
         </div>
         <div className="link-wrapper">
-          <GoogleAuth/>
+          <GoogleAuth classNames="menu-oauth" />
         </div>
-        
-
-
     </div>
   )
 }

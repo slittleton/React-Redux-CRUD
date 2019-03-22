@@ -48,8 +48,8 @@ class CreatePost extends React.Component{
         post.name  === name  &&
         Boolean(post.id) === true ){
 
-      submissionMessage('Successfully Posted', 'verifiedDataMsg','/');
-      this.navigate('/');
+      submissionMessage('Successfully Posted', 'verifiedDataMsg');
+      this.navigate('/home');
 
     } else {
       submissionMessage('Failed To Post', 'errorMsg');
@@ -67,7 +67,7 @@ class CreatePost extends React.Component{
     let subMessage = null;
     let msgType = null;
 
-    function submissionSuccess (msg, cssClass,route){
+    function submissionSuccess (msg, cssClass,){
       subMessage = msg;
       msgType = cssClass;
       setTimeout(()=>{ subMessage = null; msgType = null }, 2000)

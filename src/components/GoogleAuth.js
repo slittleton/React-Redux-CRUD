@@ -16,6 +16,12 @@ componentDidMount() {
   });
 }
 
+componentDidUpdate(){
+  if(this.props.signInStatus && this.props.waitForSignIn){
+    this.navigateHome()
+  }
+}
+
 onAuthChange = (signInStatus) => {
   if(signInStatus){
     this.props.signIn(this.auth.currentUser.get().getId())
@@ -24,28 +30,36 @@ onAuthChange = (signInStatus) => {
   }
 }
 
-onSignIn = () => {
+onSignIn =  () => {
   this.auth.signIn();
 }
+
 onSignOut = () => {
   this.auth.signOut();
 }
 
+navigateHome = () => {
+  this.props.history.push('/home')
+}
+
   renderAuthButton(){
-     if (this.props.signInStatus === null) {
-       return <div className="oauth-wrapper landing-oauth">LOADING</div>
-     } else if ( this.props.signInStatus){
-       return  <div className="oauth-wrapper landing-oauth" onClick={this.onSignOut}>Sign Out</div>
-     } else if(this.props.signInStatus=== false){
-       return <div className="oauth-wrapper landing-oauth" onClick={this.onSignIn}>Sign In With Google</div>
-     }
+
+      if (this.props.signInStatus === null) {
+        return <div className={this.props.classNames}>LOADING</div>
+      } else if ( this.props.signInStatus){
+        return  <div className={this.props.classNames} onClick={this.onSignOut}>Sign Out</div>
+      } else if(this.props.signInStatus=== false){
+        return <div className={this.props.classNames} onClick={()=>this.onSignIn(this.props.signInStatus, this.waitOnSignInUpdate)}>Sign In With Google</div>
+      }
+
   }
+
 
   render(){
     return(
-      <div>
-        {this.renderAuthButton()}
-      </div>
+        <div>
+          {this.renderAuthButton()}
+        </div>
     )
   }
 }
