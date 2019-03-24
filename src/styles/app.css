@@ -47,10 +47,38 @@ button:focus {
 .links {
   display:flex;
 }
+
+.word-logo-mobile {
+  display: none;
+}
+@media (max-width: 975px) {
+  .word-logo { 
+    width: 15rem;
+  }
+  .logo-link {
+    display: none;
+  }
+
+}
+@media (max-width: 700px){
+
+  .word-logo-mobile{
+    display: flex;
+    width: 60%;
+    margin: auto ;
+  }
+  .logo-link {
+    display: none;
+  }
+  .word-logo { 
+    display: none;
+  }
+
+}
+
 /* ===================== MENU ===================== */
 .side-menu{
   display: flex;
-  justify-content: flex-end;
   padding: .5rem;
 }
 
@@ -67,12 +95,10 @@ button:focus {
 
 .link-wrapper {
   margin: .2rem;
-  justify-content: center;
   text-align: center;
   background-color: rgba(0,0,0,0);
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 .link:hover {
   padding: .2rem;
@@ -91,25 +117,49 @@ button:focus {
   cursor: pointer;
 }
 .menu-oauth:hover{
-  /* border-bottom: 2px solid rgb(36, 255, 0) */
-  background-color: magenta;
+  padding: .2rem;
+  border-radius: 50%;
+  border-bottom: 2px solid rgb(36, 255, 0)
+}
+
+@media (max-width: 900px) {
+  .side-menu {
+    display: flex;
+    justify-content: space-between
+  }
+  .link{
+    font-size: 1.4rem;
+  }
+  .menu-oauth{
+    font-size: 1.3rem;
+  }
 }
 
 /* ================ POSTS ===================== */
 .container {
   display:flex;
   justify-content: center;
-  width: 30%;
+  width: 40%;
   margin: auto;
   word-wrap: break-word;
   overflow-wrap: break-word;
   margin-top: 2rem;
 }
 .home{
-  width: 30%;
+  width: 40%;
   margin: auto;
 }
+@media (max-width: 1200px) {
+  .home {
+    width: 90%;
+    margin: auto;
+  }
+  .container {
+    width: 90%;
+    margin: auto;
+  }
 
+}
 
 .posts-container {
   box-shadow: 2px 2px 2px rgb(59, 59, 59);
@@ -156,10 +206,22 @@ button:focus {
   border-radius: 50%;
   border-bottom: 1px solid rgb(36, 255, 0);
 }
+
+
 /* =============FORMS================== */
 .centering {
   width: 30%;
   margin: auto;
+}
+@media (max-width: 1200px) {
+  .centering {
+    width: 90%;
+    margin: auto;
+    padding: 1rem;
+    margin-right: 10%;
+  }
+
+
 }
 .field {
   width: 100%;
@@ -172,7 +234,7 @@ button:focus {
   justify-content: center;
 }
 input, textarea {
-  width: 90%;
+  width: 100%;
   background: rgba(0,0,0,0);
   border: none;
   font-size: 1.5rem;
@@ -228,9 +290,22 @@ margin: 1rem;
   font-size: 1.3rem;
   font-weight: bold;
   width: 10vw;
-
   box-shadow: 3px 3px 3px rgb(11, 80, 0);
+  border: 1px solid green
 }
+
+@media (max-width: 975px) {
+  .space-around-modal{
+    margin-top: 50%;
+  }
+  .modal-content {
+    width: 22vw;
+  }
+  .confirm-del-q {
+    text-align: center;
+  }
+}
+
 .x-btn {
   text-decoration: none;
   background-color: black;
@@ -276,7 +351,6 @@ margin: 1rem;
   margin: 0;
   padding: 0;
   background-color: black;
-
   width: 100%;
   height: 100vh;
   background-attachment: fixed;
@@ -291,6 +365,7 @@ margin: 1rem;
   'area area area3'
   'box2 mid box';
 }
+
 .back-pic {
   height: 100vh;
   width: auto;
@@ -329,16 +404,16 @@ width: 15rem;
 right: 20%;
 }
 .landing-oauth{
-  color: black;
+  color: white;
   font-size: 2rem;
   font-weight: bold;
   background-color: rgb(36, 255, 0);
   border-radius: 50%;
   padding: 1rem;
   text-decoration: none;
-  border: 8px solid black;
+  background-color: black;
 }
 .landing-oauth:hover{
-  box-shadow: 4px 4px 4px green;
-  background-color: magenta;
+  background-color: rgb(36, 255, 0);
+  color: black;
 }

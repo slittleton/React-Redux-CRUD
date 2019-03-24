@@ -6,15 +6,23 @@ import vzword from '../../assets/vz-word.png';
 
 const Header = () => {
   return (
-    <div className="header">
-      <img src={vzword} alt="#" className="word-logo"/>
-      <div className="links">
-      <SideMenu/>
-      <Link to='/' className="logo-link">
-        <img src={vzlogo} alt="#" className="logo"/>
-      </Link>
+  <div className="header-container">
+      <Link to='/' >
+        <img src={vzword} alt="#" className="word-logo-mobile"/>
+        </Link>
+      <div className="header">
+        <img src={vzword} alt="#" className="word-logo"/>
+
+        <div className="links">
+        <SideMenu/>
+        <Link to='/' className="logo-link">
+          <img src={vzlogo} alt="#" className="logo"/>
+        </Link>
+        </div>
+
       </div>
     </div>
+
   )
 }
 export default Header;

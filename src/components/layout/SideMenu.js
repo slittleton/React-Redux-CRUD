@@ -7,9 +7,6 @@ const SideMenu = () => {
   return(
     <div className="side-menu">
         <div className="link-wrapper">
-          <Link className="link" to="/">Landing</Link>
-        </div>
-        <div className="link-wrapper">
           <Link className="link" to="/home">Home</Link>
         </div>
         <div className="link-wrapper">
@@ -18,7 +15,7 @@ const SideMenu = () => {
         <div className="link-wrapper">
           <Link className="link" to="/createpost">Create</Link>
         </div>
-        <div className="link-wrapper">
+        <div className="link-wrapper oauth-wrapper">
           <GoogleAuth classNames="menu-oauth" />
         </div>
     </div>
