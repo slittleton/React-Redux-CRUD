@@ -1,3 +1,7 @@
+This is just a basic crud app. It has little posts that can be created, updated, deleted or just viewed. The reason I made this was to practice react and redux. It currently uses JSON server as the api but I may add my own express server later once I figure out how some of the backend technologies work. 
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
